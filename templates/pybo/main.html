@@ -1,0 +1,127 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="reset.css">                                              
+
+    <style>
+        #bg {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            background-size: cover;    
+            /* Preserve aspet ratio */
+            min-width: 100%;
+            min-height: 100%;
+        }
+        .jb-wrap {
+				width: 40%;
+				margin: 0px auto;
+				position: relative;
+			}
+			
+			.jb-text {
+				position: absolute;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+			}
+			.jb-text-table {
+				display: table;
+				width: 100%;
+				height: 100%;
+			}
+			.jb-text-table-row {
+				display: table-row;
+                position: relative;
+
+			}
+			.jb-text-table-cell {
+				display: table-cell;
+				vertical-align: middle;
+                
+			}
+			.jb-text h1 {
+				margin: 300px 40px;
+				padding: 10px;
+				background-color: #ffffff;
+				text-align: center;
+			}
+         
+            
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>재미로 보는 풍수지리</title>
+</head>
+<body>
+
+{% load pybo_filter %}
+{% block content %}
+<div class="jb-wrap">
+    <div class="jb-image"> <img src="{%static 'star.jpeg' %}" id="bg" alt=""></div>
+    <div class="jb-text">
+        <div class="jb-text-table">
+            <div class="jb-text-table-row">
+                <div class="jb-text-table-cell">
+                    <h1>2021 별자리 운세</h1>
+                    <a href="pybo" ><button style="background-color:aliceblue;" class="btn btn-outline-secondary" type="button" id="btn_search" >시작</button></a>
+
+                </div>
+               
+                    <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+                    </div>
+               
+                </div> 
+                
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+
+    $(".so").on('change', function() {
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- jQuery JS -->
+<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+</html>
+
+
