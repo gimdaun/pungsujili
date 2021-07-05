@@ -5,3 +5,5 @@
 챕터 별 소스는 브랜치를 참고해 주세요.
 
 > 브랜치: https://github.com/pahkey/djangobook/branches/all
+
+![image](https://user-images.githubusercontent.com/85550617/124447508-66031400-ddbc-11eb-86cf-6149ec8caaa7.png)
